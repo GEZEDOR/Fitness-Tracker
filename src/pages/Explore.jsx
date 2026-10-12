@@ -68,8 +68,8 @@ export default function Explore() {
                     onChange={(e) => setSort(e.target.value)}
                 >
                     <option value="default">Без сортировки</option>
-                    <option value="asc">Калорий меньше</option>
-                    <option value="desc">Калорий больше</option>
+                    <option value="asc">Меньше калорий</option>
+                    <option value="desc">Больше калорий</option>
                 </select>
             </div>
 
