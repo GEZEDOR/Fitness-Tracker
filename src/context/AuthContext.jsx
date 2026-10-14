@@ -23,17 +23,12 @@ export function AuthProvider({ children }) {
     }, []);
 
     async function register(name, email, password) {
-        const { data, error } = await supabase.auth.signUp({
+        const { error } = await supabase.auth.signUp({
             email,
             password,
             options: { data: { name } },
         });
         if (error) throw error;
-        if (!data.session) {
-            throw new Error(
-                "Регистрация не завершена: в Supabase нужно выключить Confirm email",
-            );
-        }
     }
 
     async function login(email, password) {
