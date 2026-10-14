@@ -1,8 +1,7 @@
 import { supabase } from "./supabaseClient";
-import { toRussian } from "./errors";
 
 function fail(error) {
-    throw new Error(toRussian(error.message));
+    throw new Error(error.message);
 }
 
 export async function getAllWorkouts() {

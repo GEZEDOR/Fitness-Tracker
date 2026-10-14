@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { toRussian } from "../services/errors";
 
 export default function Login() {
     const { user, login } = useAuth();
@@ -24,7 +23,7 @@ export default function Login() {
         try {
             await login(form.email.trim(), form.password);
         } catch (err) {
-            setError(toRussian(err.message));
+            setError(err.message);
             setSubmitting(false);
         }
     }

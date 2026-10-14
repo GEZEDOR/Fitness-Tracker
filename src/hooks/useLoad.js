@@ -8,6 +8,7 @@ export default function useLoad(loader, deps = []) {
 
     useEffect(() => {
         let ignore = false;
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setLoading(true);
         setError("");
 
@@ -26,6 +27,7 @@ export default function useLoad(loader, deps = []) {
         return () => {
             ignore = true;
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...deps, attempt]);
 
     const reload = () => setAttempt((n) => n + 1);

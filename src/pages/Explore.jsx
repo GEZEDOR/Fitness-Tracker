@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getRecipes } from "../services/externalApi";
-import { toRussian } from "../services/errors";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 import EmptyState from "../components/EmptyState";
@@ -15,13 +14,11 @@ export default function Explore() {
 
     useEffect(() => {
         const controller = new AbortController();
-        setLoading(true);
-        setError("");
 
         getRecipes(controller.signal)
             .then(setRecipes)
             .catch((err) => {
-                if (err.name !== "AbortError") setError(toRussian(err.message));
+                if (err.name !== "AbortError") setError(err.message);
             })
             .finally(() => {
                 if (!controller.signal.aborted) setLoading(false);
@@ -34,8 +31,11 @@ export default function Explore() {
     if (error)
         return (
             <ErrorMessage
-                message={error}
-                onRetry={() => setAttempt((n) => n + 1)}
+                onRetry={() => {
+                    setLoading(true);
+                    setError("");
+                    setAttempt((n) => n + 1);
+                }}
             />
         );
 

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { toRussian } from "../services/errors";
 
 export default function Register() {
     const { user, register } = useAuth();
@@ -31,7 +30,7 @@ export default function Register() {
         try {
             await register(form.name.trim(), form.email.trim(), form.password);
         } catch (err) {
-            setError(toRussian(err.message));
+            setError(err.message);
             setSubmitting(false);
         }
     }
