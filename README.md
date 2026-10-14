@@ -24,7 +24,7 @@ src/
   context/      AuthContext (пользователь, вход, регистрация, выход, восстановление сессии)
   hooks/        useLoad (загрузка данных со состояниями loading / error / повтор)
   pages/        страницы сайта
-  services/     supabaseClient, workoutsApi (CRUD), externalApi (внешний API), errors
+  services/     supabaseClient, workoutsApi (CRUD), externalApi (внешний API)
   styles/       index.css (Tailwind и цвета темы)
 supabase/
   schema.sql    таблица workouts и правила доступа (RLS)
